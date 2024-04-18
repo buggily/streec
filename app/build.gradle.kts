@@ -39,6 +39,11 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:domain"))
+
+    implementation(project(":domain:streec"))
+    implementation(project(":feature:streecs"))
+
     with(libs) {
         implementation(androidx.compat)
 
@@ -57,7 +62,6 @@ dependencies {
         implementation(androidx.core.splashscreen)
 
         implementation(androidx.lifecycle.viewModel)
-
         implementation(androidx.window)
     }
 }

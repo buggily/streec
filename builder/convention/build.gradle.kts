@@ -27,5 +27,37 @@ gradlePlugin {
             id = "streec.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
+        register("androidLibraryCompose") {
+            id = "streec.android.library.compose"
+            implementationClass = "AndroidLibraryComposeConventionPlugin"
+        }
+        register("androidLibraryData") {
+            id = "streec.android.library.data"
+            implementationClass = "AndroidLibraryDataConventionPlugin"
+        }
+        register("androidLibraryDomain") {
+            id = "streec.android.library.domain"
+            implementationClass = "AndroidLibraryDomainConventionPlugin"
+        }
+        register("androidLibraryFeature") {
+            id = "streec.android.library.feature"
+            implementationClass = "AndroidLibraryFeatureConventionPlugin"
+        }
+        register("androidLibrary") {
+            id = "streec.android.library"
+            implementationClass = "AndroidLibraryConventionPlugin"
+        }
+        register("kotlinHilt") {
+            id = "streec.kotlin.hilt"
+            implementationClass = "KotlinHiltConventionPlugin"
+        }
+        register("kotlinLibrary") {
+            id = "streec.kotlin.library"
+            implementationClass = "KotlinLibraryConventionPlugin"
+        }
+        register("kotlinLibraryLocal") {
+            id = "streec.kotlin.library.local"
+            implementationClass = "KotlinLibraryLocalConventionPlugin"
+        }
     }
 }

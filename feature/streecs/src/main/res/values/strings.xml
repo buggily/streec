@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="streec_create_title">create</string>
+    <string name="streec_create_name">name</string>
+    <string name="streec_create_confirm">confirm</string>
+
+    <string name="streec_edit_title">edit</string>
+    <string name="streec_edit_name">name</string>
+    <string name="streec_edit_confirm">confirm</string>
+
+    <string name="streec_picker_edit">edit</string>
+    <string name="streec_picker_reset">reset</string>
+    <string name="streec_picker_delete">delete</string>
+
+    <string name="streecs_name">name</string>
+    <string name="streecs_streec">streec</string>
+</resources>
