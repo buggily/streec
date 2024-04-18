@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="system_bars_translucent">@color/neutral99_translucent</color>
+    <color name="system_bars_transparent">@color/transparent</color>
+
+    <color name="ic_launcher_foreground_splash">@color/neutral99</color>
+    <color name="ic_launcher_background_splash">@color/neutral10</color>
+</resources>

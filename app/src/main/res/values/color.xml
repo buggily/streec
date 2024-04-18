@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+
+    <color name="neutral10">#FF1C1B1F</color>
+    <color name="neutral99">#FFFFFBFE</color>
+
+    <color name="neutral10_translucent">#F01C1B1F</color>
+    <color name="neutral99_translucent">#F0FFFBFE</color>
+
+    <color name="system_bars_translucent">@color/neutral10_translucent</color>
+    <color name="system_bars_transparent">@color/transparent</color>
+
+    <color name="ic_launcher_foreground">@color/neutral99</color>
+    <color name="ic_launcher_background">@color/neutral10</color>
+
+    <color name="ic_launcher_foreground_splash">@color/neutral10</color>
+    <color name="ic_launcher_background_splash">@color/neutral99</color>
+</resources>
