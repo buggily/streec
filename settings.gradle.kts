@@ -17,5 +17,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "skeleton"
+rootProject.name = "streec"
 include(":app")

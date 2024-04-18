@@ -1,5 +1,5 @@
 import com.android.build.api.dsl.ApplicationExtension
-import com.buggily.skeleton.configureAndroidCompose
+import com.buggily.streec.configureAndroidCompose
 import ext.getLib
 import ext.getLibs
 import org.gradle.api.Plugin

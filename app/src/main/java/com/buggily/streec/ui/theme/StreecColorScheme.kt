@@ -1,4 +1,4 @@
-package com.buggily.skeleton.ui.theme
+package com.buggily.streec.ui.theme
 
 import android.content.Context
 import android.os.Build

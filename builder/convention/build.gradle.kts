@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.buggily.skeleton.builder"
+group = "com.buggily.streec.builder"
 
 java {
     toolchain { languageVersion.set(JavaLanguageVersion.of(17)) }
@@ -16,15 +16,15 @@ dependencies {
 gradlePlugin {
     plugins {
         register("androidApplicationCompose") {
-            id = "skeleton.android.application.compose"
+            id = "streec.android.application.compose"
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
         register("androidApplication") {
-            id = "skeleton.android.application"
+            id = "streec.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
         register("androidHilt") {
-            id = "skeleton.android.hilt"
+            id = "streec.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
     }

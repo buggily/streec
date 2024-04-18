@@ -1,4 +1,4 @@
 <resources>
-    <string name="app">skeleton</string>
+    <string name="app">streec</string>
     <string name="greeting">Hello World!</string>
 </resources>

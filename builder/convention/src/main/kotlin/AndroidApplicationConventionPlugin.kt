@@ -1,5 +1,5 @@
 import com.android.build.api.dsl.ApplicationExtension
-import com.buggily.skeleton.configureKotlinAndroid
+import com.buggily.streec.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

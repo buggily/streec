@@ -1,8 +1,8 @@
-package com.buggily.skeleton.ui
+package com.buggily.streec.ui
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class SkeletonViewModel @Inject constructor() : ViewModel()
+class StreecViewModel @Inject constructor() : ViewModel()

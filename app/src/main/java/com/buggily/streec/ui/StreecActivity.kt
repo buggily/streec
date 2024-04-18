@@ -1,4 +1,4 @@
-package com.buggily.skeleton.ui
+package com.buggily.streec.ui
 
 import android.content.res.Configuration
 import android.os.Build
@@ -11,13 +11,13 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.buggily.skeleton.R
+import com.buggily.streec.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SkeletonActivity : AppCompatActivity() {
+class StreecActivity : AppCompatActivity() {
 
-    private val viewModel: SkeletonViewModel by viewModels()
+    private val viewModel: StreecViewModel by viewModels()
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +25,7 @@ class SkeletonActivity : AppCompatActivity() {
         installSplashScreen()
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_skeleton)
+        setContentView(R.layout.activity_streec)
 
         setupWindow(Build.VERSION.SDK_INT < Build.VERSION_CODES.O)
         setupNavigationController()
@@ -71,7 +71,7 @@ class SkeletonActivity : AppCompatActivity() {
 
     private fun setupNavigationController() {
         val navHostFragment: NavHostFragment = supportFragmentManager.findFragmentById(
-            R.id.activity_skeleton_nav_host_fragment
+            R.id.activity_streec_nav_host_fragment
         ) as NavHostFragment
 
         navController = navHostFragment.navController

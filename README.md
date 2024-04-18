@@ -1,13 +1,13 @@
-# skeleton
+# streec
 
-### What skeleton Is
+### What streec Is
 
-skeleton is a template written by @buggily for personal use.
+streec is a simple activity logger.
 
-### What skeleton Is Not
+### What streec Is Not
 
-skeleton is not a standalone application.
+streec is not a activity journal.
 
 ### Overview
 
-skeleton renders a single screen.
+screec counts the number of days since each log.

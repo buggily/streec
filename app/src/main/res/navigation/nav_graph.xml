@@ -6,5 +6,5 @@
 
     <fragment
         android:id="@+id/fragment_home"
-        android:name="com.buggily.skeleton.ui.SkeletonFragment" />
+        android:name="com.buggily.streec.ui.StreecFragment" />
 </navigation>

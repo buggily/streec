@@ -1,4 +1,4 @@
-package com.buggily.skeleton
+package com.buggily.streec
 
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.JavaVersion

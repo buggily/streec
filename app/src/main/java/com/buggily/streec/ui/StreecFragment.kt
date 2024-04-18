@@ -1,4 +1,4 @@
-package com.buggily.skeleton.ui
+package com.buggily.streec.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,13 +10,13 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.buggily.skeleton.ui.theme.SkeletonTheme
+import com.buggily.streec.ui.theme.StreecTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SkeletonFragment : Fragment() {
+class StreecFragment : Fragment() {
 
-    private val viewModel: SkeletonViewModel by viewModels()
+    private val viewModel: StreecViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,8 +26,8 @@ class SkeletonFragment : Fragment() {
         setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
 
         setContent {
-            SkeletonTheme {
-                SkeletonScreen(
+            StreecTheme {
+                StreecScreen(
                     viewModel = viewModel,
                     modifier = Modifier.fillMaxSize(),
                 )

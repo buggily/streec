@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:name="com.buggily.skeleton.ui.SkeletonApplication"
+        android:name="com.buggily.streec.ui.StreecApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app"
@@ -11,7 +11,7 @@
         android:theme="@style/Theme.Splash">
 
         <activity
-            android:name="com.buggily.skeleton.ui.SkeletonActivity"
+            android:name="com.buggily.streec.ui.StreecActivity"
             android:exported="true"
             android:resizeableActivity="true"
             android:theme="@style/Theme.Splash"

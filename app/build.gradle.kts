@@ -1,14 +1,14 @@
 plugins {
-    id("skeleton.android.application")
-    id("skeleton.android.application.compose")
-    id("skeleton.android.hilt")
+    id("streec.android.application")
+    id("streec.android.application.compose")
+    id("streec.android.hilt")
 
     id("androidx.navigation.safeargs")
 }
 
 android {
 
-    namespace = "com.buggily.skeleton"
+    namespace = "com.buggily.streec"
 
     defaultConfig {
         applicationId = namespace

@@ -1,4 +1,4 @@
-package com.buggily.skeleton.ui.theme
+package com.buggily.streec.ui.theme
 
 import androidx.compose.material3.Typography
 
