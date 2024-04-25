@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_streecs"
+    app:startDestination="@id/fragment_streecs">
+
+    <fragment
+        android:id="@+id/fragment_streecs"
+        android:name="com.buggily.streec.feature.streecs.StreecsFragment">
+
+        <action
+            android:id="@+id/action_fragment_streecs_to_dialog_fragment_streec_create"
+            app:destination="@id/dialog_fragment_streec_create" />
+
+        <action
+            android:id="@+id/action_fragment_streecs_to_dialog_fragment_streec_picker"
+            app:destination="@id/dialog_fragment_streec_picker" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/dialog_fragment_streec_create"
+        android:name="com.buggily.streec.feature.streecs.create.StreecCreateDialogFragment" />
+
+    <dialog
+        android:id="@+id/dialog_fragment_streec_picker"
+        android:name="com.buggily.streec.feature.streecs.picker.StreecPickerDialogFragment">
+
+        <argument
+            android:name="id"
+            app:argType="long" />
+
+        <action
+            android:id="@+id/action_dialog_fragment_streec_picker_to_dialog_fragment_streec_edit"
+            app:destination="@id/dialog_fragment_streec_edit" />
+    </dialog>
+
+    <dialog
+        android:id="@+id/dialog_fragment_streec_edit"
+        android:name="com.buggily.streec.feature.streecs.edit.StreecEditDialogFragment">
+
+        <argument
+            android:name="id"
+            app:argType="long" />
+    </dialog>
+</navigation>

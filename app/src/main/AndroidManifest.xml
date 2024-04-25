@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:name="com.buggily.streec.ui.StreecApplication"
+        android:name="com.buggily.streec.StreecApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app"
@@ -11,7 +11,7 @@
         android:theme="@style/Theme.Splash">
 
         <activity
-            android:name="com.buggily.streec.ui.StreecActivity"
+            android:name="com.buggily.streec.StreecActivity"
             android:exported="true"
             android:resizeableActivity="true"
             android:theme="@style/Theme.Splash"
@@ -24,5 +24,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name="com.buggily.streec.StreecsWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <receiver
+            android:name="com.buggily.streec.StreecsWidget"
+            android:exported="false">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_streecs_info" />
+        </receiver>
     </application>
 </manifest>

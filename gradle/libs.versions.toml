@@ -4,7 +4,7 @@ androidx = "1.12.0"
 androidxCompat = "1.6.1"
 androidxActivity = "1.8.2"
 androidxFragment = "1.6.2"
-androidxComposeBom = "2024.02.02"
+androidxComposeBom = "2024.04.00"
 androidxComposeCompiler = "1.5.10"
 androidxHilt = "1.2.0"
 androidxLifecycle = "2.7.0"
@@ -16,9 +16,17 @@ googleDagger = "2.51"
 googleMaterial = "1.11.0"
 
 kotlin = "1.9.22"
+kotlinxDateTime = "0.4.1"
 kotlinxCoroutines = "1.8.0"
 
-androidGradlePlugin = "8.3.1"
+androidxRoom = "2.6.1"
+androidxPaging = "3.2.1"
+
+androidGradlePlugin = "8.3.2"
+kotlinVersion = "1.9.0"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
 
 [libraries]
 
@@ -50,6 +58,16 @@ androidx-lifecycle-viewModel = { group = "androidx.lifecycle", name = "lifecycle
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
 androidx-lifecycle-viewModel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
 
+androidx-room = { group = "androidx.room", name = "room-ktx", version.ref = "androidxRoom" }
+androidx-room-core = { group = "androidx.room", name = "room-common", version.ref = "androidxRoom" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidxRoom" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidxRoom" }
+androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "androidxRoom" }
+
+androidx-paging = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "androidxPaging" }
+androidx-paging-core = { group = "androidx.paging", name = "paging-common", version.ref = "androidxPaging" }
+androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "androidxPaging" }
+
 hilt-core = { group = "com.google.dagger", name = "hilt-core", version.ref = "googleDagger" }
 hilt-core-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "googleDagger" }
 
@@ -61,17 +79,25 @@ androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navig
 androidx-hilt-navigation-fragment = { group = "androidx.hilt", name = "hilt-navigation-fragment", version.ref = "androidxHilt" }
 
 kotlin = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlinx-dateTime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDateTime" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 
 androidx-window = { group = "androidx.window", name = "window", version.ref = "androidxWindowManager" }
 
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 
 [plugins]
 
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "googleDagger" }
 
 androidx-navigation-args = { id = "androidx.navigation.safeargs.kotlin", version.ref = "androidxNavigation" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
