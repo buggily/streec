@@ -6,7 +6,7 @@ streec is a simple activity logger.
 
 ### What streec Is Not
 
-streec is not a activity journal.
+streec is not an activity journal.
 
 ### Overview
 
