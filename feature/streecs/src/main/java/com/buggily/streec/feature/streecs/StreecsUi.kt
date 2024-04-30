@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -69,7 +70,7 @@ fun StreecsScreen(
         modifier = modifier,
     ) {
         Box(modifier) {
-            StreecsContent(
+            StreecsColumn(
                 streecs = streecs,
                 uiState = uiState,
                 modifier = Modifier.fillMaxSize(),
@@ -102,8 +103,8 @@ private fun StreecsContent(
 
     Box(modifier) {
         when (streecs.loadState.refresh) {
-            is LoadState.Loading -> CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center),
+            is LoadState.Loading -> Spacer(
+                modifier = Modifier.fillMaxSize(),
             )
 
             else -> {
