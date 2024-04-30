@@ -70,7 +70,7 @@ fun StreecsScreen(
         modifier = modifier,
     ) {
         Box(modifier) {
-            StreecsColumn(
+            StreecsContent(
                 streecs = streecs,
                 uiState = uiState,
                 modifier = Modifier.fillMaxSize(),
