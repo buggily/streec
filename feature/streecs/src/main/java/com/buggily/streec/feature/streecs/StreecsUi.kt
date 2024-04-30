@@ -1,5 +1,6 @@
 package com.buggily.streec.feature.streecs
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -16,13 +17,18 @@ import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Create
+import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -30,6 +36,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
@@ -61,8 +68,8 @@ fun StreecsScreen(
         color = MaterialTheme.colorScheme.background,
         modifier = modifier,
     ) {
-        Box(modifier.fillMaxSize()) {
-            StreecsColumn(
+        Box(modifier) {
+            StreecsContent(
                 streecs = streecs,
                 uiState = uiState,
                 modifier = Modifier.fillMaxSize(),
@@ -78,6 +85,42 @@ fun StreecsScreen(
                     imageVector = Icons.Rounded.Create,
                     contentDescription = Icons.Rounded.Create.name,
                 )
+            }
+        }
+    }
+}
+
+@Composable
+private fun StreecsContent(
+    streecs: LazyPagingItems<StreecUi>,
+    uiState: StreecsUiState,
+    modifier: Modifier = Modifier,
+) {
+    val isZero: Boolean = remember(streecs.itemCount) {
+        streecs.itemCount == 0
+    }
+
+    Box(modifier) {
+        when (streecs.loadState.refresh) {
+            is LoadState.Loading -> CircularProgressIndicator(
+                modifier = Modifier.align(Alignment.Center),
+            )
+
+            else -> {
+                AnimatedVisibility(visible = isZero) {
+                    StreecsZero(
+                        uiState = uiState,
+                        modifier = Modifier.fillMaxSize(),
+                    )
+                }
+
+                AnimatedVisibility(visible = !isZero) {
+                    StreecsColumn(
+                        streecs = streecs,
+                        uiState = uiState,
+                        modifier = Modifier.fillMaxSize(),
+                    )
+                }
             }
         }
     }
@@ -172,5 +215,27 @@ private fun StreecRow(
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.alpha(0.75f),
         )
+    }
+}
+
+@Composable
+private fun StreecsZero(
+    uiState: StreecsUiState,
+    modifier: Modifier = Modifier,
+) {
+    Box(modifier) {
+        OutlinedButton(
+            onClick = uiState.onCreateClick,
+            shape = MaterialTheme.shapes.medium,
+            modifier = Modifier
+                .align(Alignment.Center)
+                .padding(dimensionResource(CR.dimen.padding)),
+        ) {
+            Text(
+                text = stringResource(R.string.streecs_zero),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.headlineSmall,
+            )
+        }
     }
 }

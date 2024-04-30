@@ -14,4 +14,5 @@
 
     <string name="streecs_name">name</string>
     <string name="streecs_streec">streec</string>
+    <string name="streecs_zero">create a streec</string>
 </resources>
