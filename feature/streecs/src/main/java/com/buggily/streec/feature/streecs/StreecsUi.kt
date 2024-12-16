@@ -5,28 +5,26 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContent
-import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Create
-import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -41,6 +39,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
+import com.buggily.streec.core.ext.coerceAtLeast
 import com.buggily.streec.domain.streec.StreecUi
 import com.buggily.streec.core.ui.R as CR
 
@@ -65,11 +64,15 @@ fun StreecsScreen(
     uiState: StreecsUiState,
     modifier: Modifier = Modifier,
 ) {
+    val paddingValues: PaddingValues = WindowInsets.safeContent.asPaddingValues().coerceAtLeast(
+        dimensionResource(CR.dimen.padding),
+    )
+
     Surface(
         color = MaterialTheme.colorScheme.background,
         modifier = modifier,
     ) {
-        Box(modifier) {
+        Box {
             StreecsContent(
                 streecs = streecs,
                 uiState = uiState,
@@ -79,8 +82,9 @@ fun StreecsScreen(
             FloatingActionButton(
                 onClick = uiState.onCreateClick,
                 modifier = Modifier
-                    .safeContentPadding()
-                    .align(Alignment.BottomEnd),
+                    .align(Alignment.BottomEnd)
+                    .padding(paddingValues)
+                    .consumeWindowInsets(paddingValues),
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Create,
