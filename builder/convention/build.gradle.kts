@@ -55,6 +55,10 @@ gradlePlugin {
             id = "streec.kotlin.library"
             implementationClass = "KotlinLibraryConventionPlugin"
         }
+        register("kotlinLibraryData") {
+            id = "streec.kotlin.library.data"
+            implementationClass = "KotlinLibraryDataConventionPlugin"
+        }
         register("kotlinLibraryLocal") {
             id = "streec.kotlin.library.local"
             implementationClass = "KotlinLibraryLocalConventionPlugin"

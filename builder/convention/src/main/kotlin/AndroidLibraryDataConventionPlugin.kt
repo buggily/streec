@@ -13,6 +13,7 @@ class AndroidLibraryDataConventionPlugin : Plugin<Project> {
         }
 
         dependencies {
+            add("implementation", project(":core:data"))
             add("implementation", project(":core:local"))
 
             with(getLibs()) {

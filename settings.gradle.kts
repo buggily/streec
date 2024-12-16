@@ -29,3 +29,4 @@ include(":data:streec")
 include(":local:streec")
 
 include(":feature:streecs")
+include(":core:data")

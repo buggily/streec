@@ -2,15 +2,16 @@ package com.buggily.streec.data.streec
 
 import androidx.paging.PagingData
 import androidx.paging.map
+import com.buggily.streec.core.data.GetInstant
 import com.buggily.streec.local.streec.LocalStreec
 import com.buggily.streec.local.streec.LocalStreecSourceable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 
 internal class StreecRepository(
     private val localStreecSource: LocalStreecSourceable,
+    private val getInstant: GetInstant,
 ) : StreecRepositable {
 
     override suspend fun getById(
@@ -28,7 +29,7 @@ internal class StreecRepository(
     }
 
     override suspend fun create(name: String) {
-        val instant: Instant = Clock.System.now()
+        val instant: Instant = getInstant()
 
         Streec(
             id = 0,
@@ -45,7 +46,7 @@ internal class StreecRepository(
         name: String,
     ) {
         val streec: LocalStreec = localStreecSource.getById(id) ?: return
-        val instant: Instant = Clock.System.now()
+        val instant: Instant = getInstant()
 
         streec.copy(
             name = name,
@@ -55,7 +56,7 @@ internal class StreecRepository(
 
     override suspend fun resetById(id: Long) {
         val streec: LocalStreec = localStreecSource.getById(id) ?: return
-        val instant: Instant = Clock.System.now()
+        val instant: Instant = getInstant()
 
         streec.copy(
             resetInstant = instant,
