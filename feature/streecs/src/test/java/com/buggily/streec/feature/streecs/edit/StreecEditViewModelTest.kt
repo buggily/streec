@@ -41,13 +41,6 @@ class StreecEditViewModelTest {
             streecText = String(),
         )
 
-        coEvery {
-            updateStreecById(
-                id = any(),
-                name = any(),
-            )
-        } returns Unit
-
         viewModel = StreecEditViewModel(
             getStreecById = getStreecById,
             updateStreecById = updateStreecById,
@@ -76,6 +69,13 @@ class StreecEditViewModelTest {
 
     @Test
     fun `on confirm click emits on confirm click event`() = runTest {
+        coEvery {
+            updateStreecById(
+                id = any(),
+                name = any(),
+            )
+        } returns Unit
+
         viewModel.uiState.value.confirmState.onClick()
 
         Assert.assertEquals(
@@ -86,6 +86,13 @@ class StreecEditViewModelTest {
 
     @Test
     fun `on confirm click updates streec by id`() = runTest {
+        coEvery {
+            updateStreecById(
+                id = any(),
+                name = any(),
+            )
+        } returns Unit
+
         viewModel.uiState.value.confirmState.onClick()
         runCurrent()
 

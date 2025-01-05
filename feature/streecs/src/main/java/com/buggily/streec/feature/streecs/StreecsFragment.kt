@@ -49,14 +49,14 @@ class StreecsFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.eventState.collect { event: StreecsEventState ->
                     when (event) {
-                        is StreecsEventState.OnClick -> actionFragmentStreecsToDialogFragmentStreecPicker(
-                            event.streec.id,
-                        ).let { findNavController().navigate(it) }
-
-                        is StreecsEventState.OnCreateClick -> actionFragmentStreecsToDialogFragmentStreecCreate().let {
-                            findNavController().navigate(it)
+                        is StreecsEventState.OnClick -> {
+                            actionFragmentStreecsToDialogFragmentStreecPicker(event.streec.id)
                         }
-                    }
+
+                        is StreecsEventState.OnCreateClick -> {
+                            actionFragmentStreecsToDialogFragmentStreecCreate()
+                        }
+                    }.let { findNavController().navigate(it) }
                 }
             }
         }

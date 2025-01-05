@@ -13,7 +13,7 @@ import kotlinx.coroutines.runBlocking
 class StreecsRemoteViewsFactory(
     private val context: Context,
     private val getStreecs: GetStreecs,
-    intent: Intent?,
+    private val intent: Intent?,
 ) : RemoteViewsService.RemoteViewsFactory {
 
     private var streecs: List<StreecUi> = emptyList()
