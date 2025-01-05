@@ -14,6 +14,9 @@ androidxWindowManager = "1.3.0"
 googleDagger = "2.51"
 googleMaterial = "1.12.0"
 
+junit = "4.13.2"
+mockk = "1.13.13"
+
 kotlin = "2.0.21"
 kotlinxDateTime = "0.6.1"
 kotlinxCoroutines = "1.9.0"
@@ -60,6 +63,7 @@ androidx-room-paging = { group = "androidx.room", name = "room-paging", version.
 androidx-paging = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "androidxPaging" }
 androidx-paging-core = { group = "androidx.paging", name = "paging-common", version.ref = "androidxPaging" }
 androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "androidxPaging" }
+androidx-paging-test = { group = "androidx.paging", name = "paging-testing", version.ref = "androidxPaging" }
 
 hilt-core = { group = "com.google.dagger", name = "hilt-core", version.ref = "googleDagger" }
 hilt-core-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "googleDagger" }
@@ -75,8 +79,12 @@ kotlin = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.
 kotlinx-dateTime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDateTime" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 
 androidx-window = { group = "androidx.window", name = "window", version.ref = "androidxWindowManager" }
+
+junit =  { group = "junit", name = "junit", version.ref = "junit" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }

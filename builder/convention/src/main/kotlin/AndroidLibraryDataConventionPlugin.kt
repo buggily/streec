@@ -19,6 +19,7 @@ class AndroidLibraryDataConventionPlugin : Plugin<Project> {
             with(getLibs()) {
                 add("implementation", getLib("kotlinx.dateTime"))
                 add("implementation", getLib("androidx.paging"))
+                add("testImplementation", getLib("androidx.paging.test"))
             }
         }
     }

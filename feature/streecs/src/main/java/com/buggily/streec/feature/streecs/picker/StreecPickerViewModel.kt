@@ -37,9 +37,7 @@ class StreecPickerViewModel @Inject constructor(
     }
 
     private fun onEditClick() = viewModelScope.launch {
-        StreecPickerEventState.OnEditClick(
-            id = id,
-        ).let { _eventState.emit(it) }
+        _eventState.emit(StreecPickerEventState.OnEditClick(id))
     }
 
     private fun onResetClick() = viewModelScope.launch {
