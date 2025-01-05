@@ -47,6 +47,10 @@ gradlePlugin {
             id = "streec.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
+        register("androidTest") {
+            id = "streec.android.test"
+            implementationClass = "AndroidTestConventionPlugin"
+        }
         register("kotlinHilt") {
             id = "streec.kotlin.hilt"
             implementationClass = "KotlinHiltConventionPlugin"
@@ -55,9 +59,17 @@ gradlePlugin {
             id = "streec.kotlin.library"
             implementationClass = "KotlinLibraryConventionPlugin"
         }
+        register("kotlinLibraryData") {
+            id = "streec.kotlin.library.data"
+            implementationClass = "KotlinLibraryDataConventionPlugin"
+        }
         register("kotlinLibraryLocal") {
             id = "streec.kotlin.library.local"
             implementationClass = "KotlinLibraryLocalConventionPlugin"
+        }
+        register("kotlinTest") {
+            id = "streec.kotlin.test"
+            implementationClass = "KotlinTestConventionPlugin"
         }
     }
 }

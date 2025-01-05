@@ -1,5 +1,6 @@
 package com.buggily.streec.data.streec.di
 
+import com.buggily.streec.core.data.GetInstant
 import com.buggily.streec.data.streec.StreecRepositable
 import com.buggily.streec.data.streec.StreecRepository
 import com.buggily.streec.local.streec.LocalStreecSourceable
@@ -15,7 +16,9 @@ internal object DataStreecModule {
     @Provides
     fun provides(
         localStreecSource: LocalStreecSourceable,
+        getInstant: GetInstant,
     ): StreecRepositable = StreecRepository(
         localStreecSource = localStreecSource,
+        getInstant = getInstant,
     )
 }

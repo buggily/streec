@@ -55,9 +55,6 @@ dependencies {
 
         implementation(material3)
 
-        implementation(kotlin)
-        implementation(kotlinx.coroutines.android)
-
         implementation(androidx.core)
         implementation(androidx.core.splashscreen)
 
