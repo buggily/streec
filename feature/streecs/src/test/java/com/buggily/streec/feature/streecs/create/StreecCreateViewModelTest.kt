@@ -28,8 +28,6 @@ class StreecCreateViewModelTest {
     @Before
     fun before() {
         clearAllMocks()
-
-        coEvery { createStreec(any()) } returns Unit
         viewModel = StreecCreateViewModel(createStreec)
     }
 
@@ -45,6 +43,10 @@ class StreecCreateViewModelTest {
 
     @Test
     fun `on confirm click emits on confirm click event`() = runTest {
+        coEvery {
+            createStreec(any())
+        } returns Unit
+
         viewModel.uiState.value.confirmState.onClick()
 
         Assert.assertEquals(
@@ -55,6 +57,10 @@ class StreecCreateViewModelTest {
 
     @Test
     fun `on confirm click creates streec`() = runTest {
+        coEvery {
+            createStreec(any())
+        } returns Unit
+
         viewModel.uiState.value.nameState.onValueChange(NAME)
         viewModel.uiState.value.confirmState.onClick()
         runCurrent()
