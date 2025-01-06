@@ -9,13 +9,4 @@
         <item name="windowSplashScreenIconBackgroundColor">@color/ic_launcher_background_splash</item>
         <item name="windowSplashScreenBackground">@color/ic_launcher_background_splash</item>
     </style>
-
-    <style name="Theme.Splash.AppWidgetContainerParent" parent="Theme.Material3.DynamicColors.DayNight">
-        <item name="appWidgetRadius">@dimen/widget_radius</item>
-        <item name="appWidgetInnerRadius">@dimen/widget_radius_inner</item>
-    </style>
-
-    <style name="Theme.Splash.AppWidgetContainer" parent="Theme.Splash.AppWidgetContainerParent">
-        <item name="appWidgetPadding">@dimen/widget_padding</item>
-    </style>
 </resources>

@@ -1,13 +1,3 @@
 <resources>
     <string name="app">streec</string>
-
-    <string name="widget_streecs_streecs">streecs</string>
-    <string name="widget_streecs_add">add streecs</string>
-    <string name="widget_streecs_content_description">view streecs</string>
-
-    <string name="widget_streecs_name">name</string>
-    <string name="widget_streecs_streec">streec</string>
-
-    <string name="widget_streecs_loading">loading</string>
-    <string name="widget_streecs_empty">empty</string>
 </resources>
