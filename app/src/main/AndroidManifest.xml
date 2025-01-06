@@ -24,22 +24,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service
-            android:name="com.buggily.streec.StreecsWidgetService"
-            android:permission="android.permission.BIND_REMOTEVIEWS" />
-
-        <receiver
-            android:name="com.buggily.streec.StreecsWidget"
-            android:exported="false">
-
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget_streecs_info" />
-        </receiver>
     </application>
 </manifest>
