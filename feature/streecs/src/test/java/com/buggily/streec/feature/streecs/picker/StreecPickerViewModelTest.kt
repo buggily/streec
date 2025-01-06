@@ -41,7 +41,7 @@ class StreecPickerViewModelTest {
     }
 
     @Test
-    fun `on edit click emits on edit click event`() = runTest {
+    fun onEditClickEmitsOnEditClickEvent() = runTest {
         viewModel.uiState.value.onEditClick()
 
         Assert.assertEquals(
@@ -51,7 +51,7 @@ class StreecPickerViewModelTest {
     }
 
     @Test
-    fun `on reset click emits on reset click event`() = runTest {
+    fun onResetClickEmitsOnResetClickEvent() = runTest {
         coEvery {
             resetStreecById(any())
         } returns Unit
@@ -65,7 +65,7 @@ class StreecPickerViewModelTest {
     }
 
     @Test
-    fun `on reset click resets streec by id`() = runTest {
+    fun onResetClickResetsStreecById() = runTest {
         coEvery {
             resetStreecById(any())
         } returns Unit
@@ -77,7 +77,7 @@ class StreecPickerViewModelTest {
     }
 
     @Test
-    fun `on delete click emits on delete click event`() = runTest {
+    fun onDeleteClickEmitsOnDeleteClickEvent() = runTest {
         coEvery {
             deleteStreecById(any())
         } returns Unit
@@ -91,7 +91,7 @@ class StreecPickerViewModelTest {
     }
 
     @Test
-    fun `on delete click deletes streec by id`() = runTest {
+    fun onDeleteClickDeletesStreecById() = runTest {
         coEvery {
             deleteStreecById(any())
         } returns Unit

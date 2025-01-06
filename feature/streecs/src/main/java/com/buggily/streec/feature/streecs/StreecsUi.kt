@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Create
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -31,6 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -84,7 +86,8 @@ fun StreecsScreen(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
                     .padding(paddingValues)
-                    .consumeWindowInsets(paddingValues),
+                    .consumeWindowInsets(paddingValues)
+                    .testTag(stringResource(R.string.streecs_create_tag)),
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Create,
@@ -107,7 +110,7 @@ private fun StreecsContent(
 
     Box(modifier) {
         when (streecs.loadState.refresh) {
-            is LoadState.Loading -> Spacer(
+            is LoadState.Loading -> StreecsLoading(
                 modifier = Modifier.fillMaxSize(),
             )
 
@@ -148,18 +151,7 @@ private fun StreecsColumn(
         modifier = modifier,
     ) {
         stickyHeader {
-            Surface(
-                color = MaterialTheme.colorScheme.surfaceVariant,
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                StreecRow(
-                    nameText = stringResource(R.string.streecs_name),
-                    streecText = stringResource(R.string.streecs_streec),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(dimensionResource(CR.dimen.padding)),
-                )
-            }
+            StreecRowHeader(Modifier.fillMaxWidth())
         }
 
         items(
@@ -178,6 +170,24 @@ private fun StreecsColumn(
                 else -> Unit
             }
         }
+    }
+}
+
+@Composable
+private fun StreecRowHeader(
+    modifier: Modifier = Modifier,
+) {
+    Surface(
+        color = MaterialTheme.colorScheme.surfaceVariant,
+        modifier = modifier,
+    ) {
+        StreecRow(
+            nameText = stringResource(R.string.streecs_name),
+            streecText = stringResource(R.string.streecs_streec),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dimensionResource(CR.dimen.padding)),
+        )
     }
 }
 
@@ -234,7 +244,8 @@ private fun StreecsZero(
             shape = MaterialTheme.shapes.medium,
             modifier = Modifier
                 .align(Alignment.Center)
-                .padding(dimensionResource(CR.dimen.padding)),
+                .padding(dimensionResource(CR.dimen.padding))
+                .testTag(stringResource(R.string.streecs_zero_tag)),
         ) {
             Text(
                 text = stringResource(R.string.streecs_zero),
@@ -242,5 +253,16 @@ private fun StreecsZero(
                 style = MaterialTheme.typography.headlineSmall,
             )
         }
+    }
+}
+
+@Composable
+private fun StreecsLoading(
+    modifier: Modifier = Modifier,
+) {
+    Box(modifier) {
+        CircularProgressIndicator(
+            modifier = Modifier.align(Alignment.Center),
+        )
     }
 }

@@ -82,6 +82,18 @@ private fun StreecEditDialog(
 }
 
 @Composable
+private fun StreecEditHeader(
+    modifier: Modifier = Modifier,
+) {
+    Text(
+        text = stringResource(R.string.streec_edit_title),
+        textAlign = TextAlign.Start,
+        style = MaterialTheme.typography.headlineSmall,
+        modifier = modifier,
+    )
+}
+
+@Composable
 private fun StreecEditTextField(
     nameState: StreecEditUiState.NameState,
     modifier: Modifier = Modifier,
@@ -91,18 +103,6 @@ private fun StreecEditTextField(
         onValueChange = nameState.onValueChange,
         label = { Text(stringResource(R.string.streec_edit_name)) },
         singleLine = true,
-        modifier = modifier,
-    )
-}
-
-@Composable
-private fun StreecEditHeader(
-    modifier: Modifier = Modifier,
-) {
-    Text(
-        text = stringResource(R.string.streec_edit_title),
-        textAlign = TextAlign.Start,
-        style = MaterialTheme.typography.headlineSmall,
         modifier = modifier,
     )
 }

@@ -32,6 +32,9 @@ class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
 
                 add("implementation", getLib("androidx.lifecycle.viewModel.compose"))
                 add("implementation", getLib("androidx.lifecycle.runtime.compose"))
+
+                add("androidTestImplementation", getLib("androidx.compose.ui.test"))
+                add("debugImplementation", getLib("androidx.compose.ui.test.manifest"))
             }
         }
     }

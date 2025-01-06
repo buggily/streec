@@ -32,7 +32,7 @@ class StreecsViewModelTest {
     }
 
     @Test
-    fun `on click emits on click event`() = runTest {
+    fun onClickEmitsOnClickEvent() = runTest {
         val streec = StreecUi(
             id = 0,
             nameText = String(),
@@ -48,7 +48,7 @@ class StreecsViewModelTest {
     }
 
     @Test
-    fun `on create click emits on create click event`() = runTest {
+    fun onCreateClickEmitsOnCreateClickEvent() = runTest {
         viewModel.uiState.value.onCreateClick()
 
         Assert.assertEquals(

@@ -49,7 +49,7 @@ class StreecEditViewModelTest {
     }
 
     @Test
-    fun `on init name state name is set`() = runTest {
+    fun onInitNameStateNameIsName() = runTest {
         Assert.assertEquals(
             NAME,
             viewModel.uiState.value.nameState.value,
@@ -57,7 +57,7 @@ class StreecEditViewModelTest {
     }
 
     @Test
-    fun `on name change updates name`() = runTest {
+    fun onNameChangeUpdatesNameStateName() = runTest {
         val name = "newname"
         viewModel.uiState.value.nameState.onValueChange(name)
 
@@ -68,7 +68,7 @@ class StreecEditViewModelTest {
     }
 
     @Test
-    fun `on confirm click emits on confirm click event`() = runTest {
+    fun onConfirmClickEmitsOnConfirmClickEvent() = runTest {
         coEvery {
             updateStreecById(
                 id = any(),
@@ -85,7 +85,7 @@ class StreecEditViewModelTest {
     }
 
     @Test
-    fun `on confirm click updates streec by id`() = runTest {
+    fun onConfirmClickUpdatesStreecById() = runTest {
         coEvery {
             updateStreecById(
                 id = any(),
