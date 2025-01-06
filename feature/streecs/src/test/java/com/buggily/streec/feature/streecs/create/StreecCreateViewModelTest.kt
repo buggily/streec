@@ -32,7 +32,7 @@ class StreecCreateViewModelTest {
     }
 
     @Test
-    fun `on name change updates name state name`() = runTest {
+    fun onNameChangeUpdatesNameStateName() = runTest {
         viewModel.uiState.value.nameState.onValueChange(NAME)
 
         Assert.assertEquals(
@@ -42,7 +42,7 @@ class StreecCreateViewModelTest {
     }
 
     @Test
-    fun `on confirm click emits on confirm click event`() = runTest {
+    fun onConfirmClickEmitsOnClickEvent() = runTest {
         coEvery {
             createStreec(any())
         } returns Unit
@@ -56,7 +56,7 @@ class StreecCreateViewModelTest {
     }
 
     @Test
-    fun `on confirm click creates streec`() = runTest {
+    fun onConfirmClickCreatesStreec() = runTest {
         coEvery {
             createStreec(any())
         } returns Unit

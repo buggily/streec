@@ -4,6 +4,7 @@ androidx = "1.15.0"
 androidxCompat = "1.7.0"
 androidxActivity = "1.9.3"
 androidxFragment = "1.8.5"
+androidxCompose = "1.7.6"
 androidxComposeBom = "2024.12.01"
 androidxHilt = "1.2.0"
 androidxLifecycle = "2.8.7"
@@ -42,6 +43,9 @@ androidx-compose-material3-windowSizeClass = { group = "androidx.compose.materia
 
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+
+androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "androidxCompose" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "androidxCompose" }
 
 androidx-navigation = { group = "androidx.navigation", name = "navigation-ui", version = "androidxNavigation" }
 androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "androidxNavigation" }

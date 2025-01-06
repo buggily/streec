@@ -43,7 +43,7 @@ class StreecRepositoryTest {
     }
 
     @Test
-    fun `get by id returns streec by id`() = runTest {
+    fun getByIdReturnsStreecById() = runTest {
         val localStreec = LocalStreec(
             id = ID,
             name = NAME,
@@ -63,7 +63,7 @@ class StreecRepositoryTest {
     }
 
     @Test
-    fun `get paging returns streec pages`() = runTest {
+    fun getPagingReturnsStreecPages() = runTest {
         val localStreec = LocalStreec(
             id = ID,
             name = NAME,
@@ -87,7 +87,7 @@ class StreecRepositoryTest {
     }
 
     @Test
-    fun `get returns streecs`() = runTest {
+    fun getReturnsStreecs() = runTest {
         val localStreec = LocalStreec(
             id = ID,
             name = NAME,
@@ -111,7 +111,7 @@ class StreecRepositoryTest {
     }
 
     @Test
-    fun `create creates streec`() = runTest {
+    fun createCreatesStreec() = runTest {
         val localStreec = LocalStreec(
             id = ID,
             name = NAME,
@@ -129,7 +129,7 @@ class StreecRepositoryTest {
     }
 
     @Test
-    fun `update by id updates streec by id`() = runTest {
+    fun updateByIdUpdatesStreecById() = runTest {
         val localStreec = LocalStreec(
             id = ID,
             name = "newname",
@@ -160,7 +160,7 @@ class StreecRepositoryTest {
     }
 
     @Test
-    fun `reset by id resets streec by id`() = runTest {
+    fun resetByIdResetsStreecById() = runTest {
         val localStreec = LocalStreec(
             id = ID,
             name = NAME,
@@ -190,7 +190,7 @@ class StreecRepositoryTest {
     }
 
     @Test
-    fun `delete by id deletes streec by id`() = runTest {
+    fun deleteByIdDeletesStreecById() = runTest {
         val localStreec = LocalStreec(
             id = ID,
             name = NAME,
