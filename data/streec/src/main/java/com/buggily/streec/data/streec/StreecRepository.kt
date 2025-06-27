@@ -7,8 +7,10 @@ import com.buggily.streec.local.streec.LocalStreec
 import com.buggily.streec.local.streec.LocalStreecSourceable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.datetime.Instant
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
+@OptIn(ExperimentalTime::class)
 internal class StreecRepository(
     private val localStreecSource: LocalStreecSourceable,
     private val getInstant: GetInstant,

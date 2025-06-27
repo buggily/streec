@@ -1,7 +1,6 @@
 package com.buggily.streec.local.streec.di
 
 import androidx.paging.PagingConfig
-import com.buggily.streec.local.streec.LocalStreec
 import com.buggily.streec.local.streec.LocalStreecDao
 import com.buggily.streec.local.streec.LocalStreecSource
 import com.buggily.streec.local.streec.LocalStreecSourceable
