@@ -1,8 +1,10 @@
 package com.buggily.streec.local.core
 
 import androidx.room.TypeConverter
-import kotlinx.datetime.Instant
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
+@OptIn(ExperimentalTime::class)
 internal class InstantTypeConverter {
 
     @TypeConverter

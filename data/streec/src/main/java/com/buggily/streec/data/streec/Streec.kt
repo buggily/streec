@@ -1,7 +1,9 @@
 package com.buggily.streec.data.streec
 
-import kotlinx.datetime.Instant
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
+@OptIn(ExperimentalTime::class)
 data class Streec(
     val id: Long,
     val name: String,

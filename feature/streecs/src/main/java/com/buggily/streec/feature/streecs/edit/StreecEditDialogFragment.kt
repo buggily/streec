@@ -18,6 +18,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.buggily.streec.core.ui.StreecTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import androidx.core.graphics.drawable.toDrawable
 
 @AndroidEntryPoint
 class StreecEditDialogFragment : DialogFragment() {
@@ -43,7 +44,7 @@ class StreecEditDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog?.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
 
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {

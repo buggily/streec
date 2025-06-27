@@ -20,6 +20,7 @@ import com.buggily.streec.core.ui.StreecTheme
 import com.buggily.streec.feature.streecs.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import androidx.core.graphics.drawable.toDrawable
 
 @AndroidEntryPoint
 class StreecPickerDialogFragment : DialogFragment() {
@@ -48,7 +49,7 @@ class StreecPickerDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog?.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
 
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
