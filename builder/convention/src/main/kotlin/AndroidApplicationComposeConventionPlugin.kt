@@ -27,9 +27,6 @@ class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
                 add("implementation", getLib("androidx.compose.material3"))
                 add("implementation", getLib("androidx.compose.material3.windowSizeClass"))
 
-                add("implementation", getLib("androidx.navigation.compose"))
-                add("implementation", getLib("androidx.hilt.navigation.compose"))
-
                 add("implementation", getLib("androidx.lifecycle.viewModel.compose"))
                 add("implementation", getLib("androidx.lifecycle.runtime.compose"))
 
