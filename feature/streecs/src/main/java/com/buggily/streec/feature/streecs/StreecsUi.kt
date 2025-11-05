@@ -16,8 +16,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContent
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Create
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -33,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -89,8 +88,8 @@ fun StreecsScreen(
                     .testTag(stringResource(R.string.streecs_create_tag)),
             ) {
                 Icon(
-                    imageVector = Icons.Rounded.Create,
-                    contentDescription = Icons.Rounded.Create.name,
+                    painter = painterResource(CR.drawable.create),
+                    contentDescription = stringResource(R.string.streecs_create_content_description),
                 )
             }
         }

@@ -6,10 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Delete
-import androidx.compose.material.icons.rounded.Edit
-import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -19,8 +15,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -74,7 +71,7 @@ private fun StreecPickerColumn(
     ) {
         StreecPickerButton(
             text = stringResource(R.string.streec_picker_edit),
-            imageVector = Icons.Rounded.Edit,
+            painter =  painterResource(CR.drawable.edit),
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable { uiState.onEditClick() }
@@ -83,7 +80,7 @@ private fun StreecPickerColumn(
 
         StreecPickerButton(
             text = stringResource(R.string.streec_picker_reset),
-            imageVector = Icons.Rounded.Refresh,
+            painter = painterResource(CR.drawable.reset),
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable { uiState.onResetClick() }
@@ -92,7 +89,7 @@ private fun StreecPickerColumn(
 
         StreecPickerButton(
             text = stringResource(R.string.streec_picker_delete),
-            imageVector = Icons.Rounded.Delete,
+            painter = painterResource(CR.drawable.delete),
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable { uiState.onDeleteClick() }
@@ -104,7 +101,7 @@ private fun StreecPickerColumn(
 @Composable
 private fun StreecPickerButton(
     text: String,
-    imageVector: ImageVector,
+    painter: Painter,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -116,7 +113,7 @@ private fun StreecPickerButton(
         modifier = modifier,
     ) {
         Icon(
-            imageVector = imageVector,
+            painter = painter,
             contentDescription = text,
         )
 
