@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,10 +19,7 @@ class StreecCreateViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _uiState: MutableStateFlow<StreecCreateUiState>
-    val uiState: StateFlow<StreecCreateUiState> get() = _uiState
-
-    private val _eventState: MutableSharedFlow<StreecCreateEventState> = MutableSharedFlow()
-    val eventState: SharedFlow<StreecCreateEventState> get() = _eventState
+    val uiState: StateFlow<StreecCreateUiState> get() = _uiState.asStateFlow()
 
     init {
         StreecCreateUiState(
@@ -31,6 +29,7 @@ class StreecCreateViewModel @Inject constructor(
             ),
             confirmState = StreecCreateUiState.ConfirmState(
                 onClick = ::onConfirmClick,
+                isClicked = false,
             ),
         ).let { _uiState = MutableStateFlow(it) }
     }
@@ -45,6 +44,12 @@ class StreecCreateViewModel @Inject constructor(
         val name: String = nameState.value.trim()
 
         createStreec(name = name)
-        _eventState.emit(StreecCreateEventState.OnConfirmClick)
+        onIsConfirmClickedChange(isClicked = true)
+    }
+
+    fun onConfirmClicked() = onIsConfirmClickedChange(isClicked = false)
+
+    private fun onIsConfirmClickedChange(isClicked: Boolean) = _uiState.update {
+        it.copy(confirmState = it.confirmState.copy(isClicked = isClicked))
     }
 }

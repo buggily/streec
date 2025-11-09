@@ -16,5 +16,6 @@ data class StreecCreateUiState(
 
     data class ConfirmState(
         val onClick: () -> Unit,
+        val isClicked: Boolean,
     )
 }

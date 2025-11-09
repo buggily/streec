@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -25,10 +26,7 @@ class StreecEditViewModel @Inject constructor(
     private val id: Long = checkNotNull(savedStateHandle["id"])
 
     private val _uiState: MutableStateFlow<StreecEditUiState>
-    val uiState: StateFlow<StreecEditUiState> get() = _uiState
-
-    private val _eventState: MutableSharedFlow<StreecEditEventState> = MutableSharedFlow()
-    val eventState: SharedFlow<StreecEditEventState> get() = _eventState
+    val uiState: StateFlow<StreecEditUiState> get() = _uiState.asStateFlow()
 
     init {
         StreecEditUiState(
@@ -38,6 +36,7 @@ class StreecEditViewModel @Inject constructor(
             ),
             confirmState = StreecEditUiState.ConfirmState(
                 onClick = ::onConfirmClick,
+                isClicked = false,
             ),
         ).let { _uiState = MutableStateFlow(it) }
 
@@ -61,6 +60,12 @@ class StreecEditViewModel @Inject constructor(
             name = name,
         )
 
-        _eventState.emit(StreecEditEventState.OnConfirmClick)
+        onIsConfirmClickedChange(isClicked = true)
+    }
+
+    fun onConfirmClicked() = onIsConfirmClickedChange(isClicked = false)
+
+    private fun onIsConfirmClickedChange(isClicked: Boolean) = _uiState.update {
+        it.copy(confirmState = it.confirmState.copy(isClicked = isClicked))
     }
 }

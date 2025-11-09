@@ -42,24 +42,18 @@ class StreecCreateViewModelTest {
     }
 
     @Test
-    fun onConfirmClickEmitsOnClickEvent() = runTest {
-        coEvery {
-            createStreec(any())
-        } returns Unit
+    fun onConfirmClickSetsIsClicked() = runTest {
+        coEvery { createStreec(name = any()) } returns Unit
 
         viewModel.uiState.value.confirmState.onClick()
+        runCurrent()
 
-        Assert.assertEquals(
-            StreecCreateEventState.OnConfirmClick,
-            viewModel.eventState.first(),
-        )
+        Assert.assertTrue(viewModel.uiState.value.confirmState.isClicked)
     }
 
     @Test
     fun onConfirmClickCreatesStreec() = runTest {
-        coEvery {
-            createStreec(any())
-        } returns Unit
+        coEvery { createStreec(name = any()) } returns Unit
 
         viewModel.uiState.value.nameState.onValueChange(NAME)
         viewModel.uiState.value.confirmState.onClick()

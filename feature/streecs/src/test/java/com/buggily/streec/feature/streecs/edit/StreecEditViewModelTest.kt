@@ -68,7 +68,7 @@ class StreecEditViewModelTest {
     }
 
     @Test
-    fun onConfirmClickEmitsOnConfirmClickEvent() = runTest {
+    fun onConfirmClickSetsIsConfirmClicked() = runTest {
         coEvery {
             updateStreecById(
                 id = any(),
@@ -77,11 +77,9 @@ class StreecEditViewModelTest {
         } returns Unit
 
         viewModel.uiState.value.confirmState.onClick()
+        runCurrent()
 
-        Assert.assertEquals(
-            StreecEditEventState.OnConfirmClick,
-            viewModel.eventState.first(),
-        )
+        Assert.assertTrue(viewModel.uiState.value.confirmState.isClicked)
     }
 
     @Test

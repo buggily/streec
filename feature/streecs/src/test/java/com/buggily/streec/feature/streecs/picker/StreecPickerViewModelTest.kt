@@ -9,7 +9,6 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
@@ -41,34 +40,26 @@ class StreecPickerViewModelTest {
     }
 
     @Test
-    fun onEditClickEmitsOnEditClickEvent() = runTest {
+    fun onEditClickSetsIsEditClicked() = runTest {
         viewModel.uiState.value.onEditClick()
+        runCurrent()
 
-        Assert.assertEquals(
-            StreecPickerEventState.OnEditClick(ID),
-            viewModel.eventState.first(),
-        )
+        Assert.assertTrue(viewModel.uiState.value.isEditClicked)
     }
 
     @Test
-    fun onResetClickEmitsOnResetClickEvent() = runTest {
-        coEvery {
-            resetStreecById(any())
-        } returns Unit
+    fun onResetClickSetsIsResetClicked() = runTest {
+        coEvery { resetStreecById(id = any()) } returns Unit
 
         viewModel.uiState.value.onResetClick()
+        runCurrent()
 
-        Assert.assertEquals(
-            StreecPickerEventState.OnResetClick,
-            viewModel.eventState.first(),
-        )
+        Assert.assertTrue(viewModel.uiState.value.isResetClicked)
     }
 
     @Test
     fun onResetClickResetsStreecById() = runTest {
-        coEvery {
-            resetStreecById(any())
-        } returns Unit
+        coEvery { resetStreecById(id = any()) } returns Unit
 
         viewModel.uiState.value.onResetClick()
         runCurrent()
@@ -77,24 +68,18 @@ class StreecPickerViewModelTest {
     }
 
     @Test
-    fun onDeleteClickEmitsOnDeleteClickEvent() = runTest {
-        coEvery {
-            deleteStreecById(any())
-        } returns Unit
+    fun onDeleteClickSetsIsDeleteClicked() = runTest {
+        coEvery { deleteStreecById(id = any()) } returns Unit
 
         viewModel.uiState.value.onDeleteClick()
+        runCurrent()
 
-        Assert.assertEquals(
-            StreecPickerEventState.OnDeleteClick,
-            viewModel.eventState.first(),
-        )
+        Assert.assertTrue(viewModel.uiState.value.isDeleteClicked)
     }
 
     @Test
     fun onDeleteClickDeletesStreecById() = runTest {
-        coEvery {
-            deleteStreecById(any())
-        } returns Unit
+        coEvery { deleteStreecById(any()) } returns Unit
 
         viewModel.uiState.value.onDeleteClick()
         runCurrent()
