@@ -114,7 +114,10 @@ class StreecPickerUiTest {
 
     private val uiState = StreecPickerUiState(
         onEditClick = {},
+        isEditClicked = false,
         onResetClick = {},
+        isResetClicked = false,
         onDeleteClick = {},
+        isDeleteClicked = false,
     )
 }

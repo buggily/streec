@@ -210,7 +210,9 @@ class StreecsUiTest {
     }
 
     private val uiState = StreecsUiState(
+        streec = null,
         onClick = {},
         onCreateClick = {},
+        isCreateClicked = false,
     )
 }

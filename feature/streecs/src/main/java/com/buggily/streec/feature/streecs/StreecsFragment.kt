@@ -18,6 +18,7 @@ import com.buggily.streec.core.ui.StreecTheme
 import com.buggily.streec.feature.streecs.StreecsFragmentDirections.actionFragmentStreecsToDialogFragmentStreecCreate
 import com.buggily.streec.feature.streecs.StreecsFragmentDirections.actionFragmentStreecsToDialogFragmentStreecPicker
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -47,16 +48,24 @@ class StreecsFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.eventState.collect { event: StreecsEventState ->
-                    when (event) {
-                        is StreecsEventState.OnClick -> {
-                            actionFragmentStreecsToDialogFragmentStreecPicker(event.streec.id)
-                        }
+                launch {
+                    viewModel.uiState.map { it.streec }.collect {
+                        if (it == null) return@collect
 
-                        is StreecsEventState.OnCreateClick -> {
-                            actionFragmentStreecsToDialogFragmentStreecCreate()
-                        }
-                    }.let { findNavController().navigate(it) }
+                        val directions = actionFragmentStreecsToDialogFragmentStreecPicker(it.id)
+                        findNavController().navigate(directions)
+                        viewModel.onClicked()
+                    }
+                }
+
+                launch {
+                    viewModel.uiState.map { it.isCreateClicked }.collect {
+                        if (!it) return@collect
+
+                        val directions = actionFragmentStreecsToDialogFragmentStreecCreate()
+                        findNavController().navigate(directions)
+                        viewModel.onCreateClicked()
+                    }
                 }
             }
         }

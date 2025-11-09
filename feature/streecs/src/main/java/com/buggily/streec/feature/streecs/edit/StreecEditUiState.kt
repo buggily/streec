@@ -16,5 +16,6 @@ data class StreecEditUiState(
 
     data class ConfirmState(
         val onClick: () -> Unit,
+        val isClicked: Boolean,
     )
 }

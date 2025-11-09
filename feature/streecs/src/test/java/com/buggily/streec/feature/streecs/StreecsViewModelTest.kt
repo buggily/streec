@@ -6,15 +6,18 @@ import com.buggily.streec.domain.streec.StreecUi
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class StreecsViewModelTest {
 
     private val getStreecPaging: GetStreecPaging = mockk()
@@ -32,7 +35,7 @@ class StreecsViewModelTest {
     }
 
     @Test
-    fun onClickEmitsOnClickEvent() = runTest {
+    fun onClickSetsStreec() = runTest {
         val streec = StreecUi(
             id = 0,
             nameText = String(),
@@ -40,20 +43,19 @@ class StreecsViewModelTest {
         )
 
         viewModel.uiState.value.onClick(streec)
+        runCurrent()
 
         Assert.assertEquals(
-            StreecsEventState.OnClick(streec),
-            viewModel.eventState.first()
+            streec,
+            viewModel.uiState.value.streec,
         )
     }
 
     @Test
-    fun onCreateClickEmitsOnCreateClickEvent() = runTest {
+    fun onCreateClickSetsIsCreateClicked() = runTest {
         viewModel.uiState.value.onCreateClick()
+        runCurrent()
 
-        Assert.assertEquals(
-            StreecsEventState.OnCreateClick,
-            viewModel.eventState.first()
-        )
+        Assert.assertTrue(viewModel.uiState.value.isCreateClicked)
     }
 }

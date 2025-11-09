@@ -137,6 +137,7 @@ class StreecCreateUiTest {
 
         val confirmState = StreecCreateUiState.ConfirmState(
             onClick = { isClick = true },
+            isClicked = false,
         )
 
         val uiState: StreecCreateUiState = uiState.copy(
@@ -163,6 +164,7 @@ class StreecCreateUiTest {
         ),
         confirmState = StreecCreateUiState.ConfirmState(
             onClick = {},
+            isClicked = false,
         ),
     )
 }

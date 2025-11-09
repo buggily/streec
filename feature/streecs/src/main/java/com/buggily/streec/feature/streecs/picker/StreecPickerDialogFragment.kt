@@ -1,7 +1,6 @@
 package com.buggily.streec.feature.streecs.picker
 
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +20,7 @@ import com.buggily.streec.feature.streecs.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import androidx.core.graphics.drawable.toDrawable
+import kotlinx.coroutines.flow.map
 
 @AndroidEntryPoint
 class StreecPickerDialogFragment : DialogFragment() {
@@ -53,15 +53,35 @@ class StreecPickerDialogFragment : DialogFragment() {
 
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.eventState.collect {
-                    when (it) {
-                        is StreecPickerEventState.OnEditClick -> findNavController().navigate(
+                launch {
+                    viewModel.uiState.map { it.isEditClicked }.collect {
+                        if (!it) return@collect
+
+                        findNavController().navigate(
                             resId = R.id.action_dialog_fragment_streec_picker_to_dialog_fragment_streec_edit,
-                            args = Bundle().apply { putLong("id", it.id) },
+                            args = Bundle().apply { putLong("id", viewModel.id) },
                         )
 
-                        is StreecPickerEventState.OnResetClick -> dismiss()
-                        is StreecPickerEventState.OnDeleteClick -> dismiss()
+                        viewModel.onEditClicked()
+                    }
+                }
+
+
+                launch {
+                    viewModel.uiState.map { it.isResetClicked }.collect {
+                        if (!it) return@collect
+
+                        dismiss()
+                        viewModel.onResetClicked()
+                    }
+                }
+
+                launch {
+                    viewModel.uiState.map { it.isDeleteClicked }.collect {
+                        if (!it) return@collect
+
+                        dismiss()
+                        viewModel.onDeleteClicked()
                     }
                 }
             }

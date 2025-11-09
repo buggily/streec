@@ -19,6 +19,8 @@ import com.buggily.streec.core.ui.StreecTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import androidx.core.graphics.drawable.toDrawable
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 
 @AndroidEntryPoint
 class StreecEditDialogFragment : DialogFragment() {
@@ -48,10 +50,11 @@ class StreecEditDialogFragment : DialogFragment() {
 
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.eventState.collect {
-                    when (it) {
-                        is StreecEditEventState.OnConfirmClick -> dismiss()
-                    }
+                viewModel.uiState.map { it.confirmState.isClicked }.collect {
+                    if (!it) return@collect
+
+                    dismiss()
+                    viewModel.onConfirmClicked()
                 }
             }
         }
